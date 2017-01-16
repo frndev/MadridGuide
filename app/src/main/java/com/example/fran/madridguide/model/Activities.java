@@ -53,6 +53,16 @@ public class Activities implements IModelIterable<Activity>,IModelUpdatable<Acti
     }
 
     @Override
+    public long indexOf(Activity element) {
+        for (int i = 0; i < allElements().size(); i++) {
+            if (allElements().get(i).equals(element)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    @Override
     public void add(Activity activity) {
         activities.add(activity);
 

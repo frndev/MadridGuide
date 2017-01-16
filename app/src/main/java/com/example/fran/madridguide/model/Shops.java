@@ -49,6 +49,17 @@ public class Shops implements IModelIterable<Shop>, IModelUpdatable<Shop> {
     }
 
     @Override
+    public long indexOf(Shop shop) {
+        for (int i = 0; i < allElements().size(); i++) {
+            if (get(i).equals(shop)){
+                return i;
+            }
+
+        }
+        return -1;
+    }
+
+    @Override
     public List<Shop> allElements() {
         return shops;
     }

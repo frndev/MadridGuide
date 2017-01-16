@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.example.fran.madridguide.R;
-import com.example.fran.madridguide.adapters.ActivitiesAdapter;
+import com.example.fran.madridguide.adapters.ActivityInfoWindowAdapter;
 import com.example.fran.madridguide.fragments.ActivitiesFragment;
 import com.example.fran.madridguide.interactors.GetAllActivitiesInteractor;
 import com.example.fran.madridguide.interactors.InteractorCompletion;
@@ -18,6 +18,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class ActivitiesActivity extends AppCompatActivity {
@@ -25,6 +26,7 @@ public class ActivitiesActivity extends AppCompatActivity {
     private ActivitiesFragment activitiesFragment;
     private MapFragment mapFragment;
     private GoogleMap googleMap;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +52,7 @@ public class ActivitiesActivity extends AppCompatActivity {
             @Override
             public void elementClicked(Activity activity, int position) {
 
-                Navigator.navigateFromShopsActivityToDetailActivityActivity(activity, ActivitiesActivity.this);
+                Navigator.navigateFromActivitiesActivityToDetailActivityActivity(activity, ActivitiesActivity.this);
 
 
             }
@@ -58,7 +60,7 @@ public class ActivitiesActivity extends AppCompatActivity {
 
     }
 
-    private void setUpMap(Activities activities) {
+    private void setUpMap(final Activities activities) {
 
         googleMap = mapFragment.getMap();
 
@@ -76,6 +78,7 @@ public class ActivitiesActivity extends AppCompatActivity {
         for (Activity activity : activities.allElements()) {
             // create marker
             MarkerOptions marker = new MarkerOptions().position(new LatLng(activity.getLatitude(), activity.getLongitude())).title(activity.getName());
+            marker.snippet(activity.getLogoImageURL() + "activity:" + activities.indexOf(activity));
 
             // adding marker
             googleMap.addMarker(marker);
@@ -85,8 +88,15 @@ public class ActivitiesActivity extends AppCompatActivity {
         googleMap.getUiSettings().setZoomControlsEnabled(false);
         googleMap.getUiSettings().setAllGesturesEnabled(false);
         googleMap.getUiSettings().setMapToolbarEnabled(false);
-
-
+        googleMap.setInfoWindowAdapter(new ActivityInfoWindowAdapter(getApplicationContext()));
+        googleMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+            @Override
+            public void onInfoWindowClick(Marker marker) {
+                long position = Integer.parseInt(marker.getSnippet().split("activity:")[1]);
+                Activity activity = activities.get(position);
+                Navigator.navigateFromActivitiesActivityToDetailActivityActivity(activity,ActivitiesActivity.this);
+            }
+        });
         moveCamera();
 
     }

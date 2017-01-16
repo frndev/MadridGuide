@@ -49,7 +49,7 @@ public class Navigator {
         return i;
     }
 
-    public static Intent navigateFromShopsActivityToDetailActivityActivity(Activity activity, ActivitiesActivity activitiesActivity) {
+    public static Intent navigateFromActivitiesActivityToDetailActivityActivity(Activity activity, ActivitiesActivity activitiesActivity) {
 
         final Intent i = new Intent(activitiesActivity, ActivityDetailActivity.class);
 

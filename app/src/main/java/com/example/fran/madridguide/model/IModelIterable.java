@@ -10,6 +10,7 @@ public interface IModelIterable<T> {
 
     long size();
     T get(long index);
+    long indexOf(T element);
     List<T> allElements();
 
 }
