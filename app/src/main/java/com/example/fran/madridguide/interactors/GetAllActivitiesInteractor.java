@@ -28,7 +28,7 @@ public class GetAllActivitiesInteractor implements IGetAllDataInteractor<Activit
     public void execute(final Context context, final InteractorCompletion<Activities> completion) {
 
         if (Tools.isActivitiesDownloaded(context)) {
-            executeFromCache(context,completion);
+            executeFromCache(context,null);
         }else{
             executeFromInternet(context,completion);
         }
@@ -74,7 +74,9 @@ public class GetAllActivitiesInteractor implements IGetAllDataInteractor<Activit
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
-                        completion.completion(activities);
+                        if (completion != null){
+                            completion.completion(activities);
+                        }
                     }
                 });
 

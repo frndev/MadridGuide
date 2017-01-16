@@ -25,7 +25,7 @@ public class GetAllShopsInteractor implements IGetAllDataInteractor<Shops>{
     public void execute(final Context context, final InteractorCompletion<Shops> completion) {
 
         if (Tools.isShopsDownloaded(context)) {
-            executeFromCache(context,completion);
+            executeFromCache(context,null);
         }else{
             executeFromInternet(context,completion);
         }
@@ -44,6 +44,7 @@ public class GetAllShopsInteractor implements IGetAllDataInteractor<Shops>{
                 if (result != null) {
                     completion.completion(Shops.build(shopList));
                 }
+                Tools.shopDataDownloaded(context);
             }
 
             @Override
@@ -68,7 +69,9 @@ public class GetAllShopsInteractor implements IGetAllDataInteractor<Shops>{
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
-                        completion.completion(shops);
+                        if (completion != null){
+                            completion.completion(shops);
+                        }
                     }
                 });
 
