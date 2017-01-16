@@ -10,8 +10,8 @@ import java.util.Date;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    public static final String DATABASE_NAME = "everpobre.sqlite";
-    public static final int DATABASE_VERSION = 2;
+    public static final String DATABASE_NAME = "madridguide.sqlite";
+    public static final int DATABASE_VERSION = 1;
     public static final long INVALID_ID = -1;
 
     private static DBHelper sharedInstance;

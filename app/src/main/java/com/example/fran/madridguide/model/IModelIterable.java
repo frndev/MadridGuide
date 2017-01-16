@@ -5,11 +5,11 @@ import java.util.List;
 /**
  * Created by fran on 12/1/17.
  */
-public interface IModelIterable {
+public interface IModelIterable<T> {
 
 
     long size();
-    Shop get(long index);
-    List<Shop> allShops();
+    T get(long index);
+    List<T> allElements();
 
 }

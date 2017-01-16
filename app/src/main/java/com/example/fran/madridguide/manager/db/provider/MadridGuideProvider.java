@@ -13,7 +13,7 @@ import com.example.fran.madridguide.manager.db.ShopDAO;
 import com.example.fran.madridguide.model.Shop;
 
 public class MadridGuideProvider extends ContentProvider {
-    public static final String MADRIDGUIDE_PROVIDER = "io.keepcoding.madridguide.provider";
+    public static final String MADRIDGUIDE_PROVIDER = "com.example.fran.madridguide.provider";
 
     public static final Uri SHOPS_URI = Uri.parse("content://" + MADRIDGUIDE_PROVIDER + "/shops");
 
@@ -61,10 +61,10 @@ public class MadridGuideProvider extends ContentProvider {
 
         switch (uriMatcher.match(uri)) {
             case SINGLE_SHOP :
-                type = "vnd.android.cursor.item/vnd.io.keepcoding.madridguide.provider";
+                type = "vnd.android.cursor.item/vnd.com.example.fran.madridguide.provider";
                 break;
             case ALL_SHOPS:
-                type = "vnd.android.cursor.dir/vnd.io.keepcoding.madridguide.provider";
+                type = "vnd.android.cursor.dir/vnd.com.example.fran.madridguide.provider";
                 break;
             default:
                 break;
