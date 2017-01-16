@@ -24,7 +24,8 @@ public class DBConstants {
     public static final String KEY_ACTIVITY_LATITUDE = "latitude";
     public static final String KEY_ACTIVITY_LONGITUDE = "longitude";
     public static final String KEY_ACTIVITY_ADDRESS = "address";
-    public static final String KEY_ACTIVITY_DESCRIPTION = "description";
+    public static final String KEY_ACTIVITY_DESCRIPTION_ES = "descriptionES";
+    public static final String KEY_ACTIVITY_DESCRIPTION_EN = "descriptionEN";
     public static final String KEY_ACTIVITY_URL = "url";
 
     public static final String[] allShopColumns = {
@@ -44,7 +45,8 @@ public class DBConstants {
             KEY_ACTIVITY_NAME,
             KEY_ACTIVITY_ADDRESS,
             KEY_ACTIVITY_URL,
-            KEY_ACTIVITY_DESCRIPTION,
+            KEY_ACTIVITY_DESCRIPTION_ES,
+            KEY_ACTIVITY_DESCRIPTION_EN,
             KEY_ACTIVITY_LATITUDE,
             KEY_ACTIVITY_LONGITUDE,
             KEY_ACTIVITY_IMAGE_URL,
@@ -75,7 +77,8 @@ public class DBConstants {
                     + KEY_ACTIVITY_URL + " text,"
                     + KEY_ACTIVITY_LATITUDE + " real,"
                     + KEY_ACTIVITY_LONGITUDE + " real, "
-                    + KEY_ACTIVITY_DESCRIPTION + " text "
+                    + KEY_ACTIVITY_DESCRIPTION_ES + " text, "
+                    + KEY_ACTIVITY_DESCRIPTION_EN + " text "
                     + ");";
 
 

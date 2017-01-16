@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         setupActivitiesButton();
 
 
-        if (isInternetAvailable(this)) {
+        if (!isInternetAvailable(this)) {
             Toast.makeText(MainActivity.this,"No Internet Connection", Toast.LENGTH_LONG).show();
 
         }

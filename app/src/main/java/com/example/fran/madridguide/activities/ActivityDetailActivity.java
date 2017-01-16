@@ -3,12 +3,10 @@ package com.example.fran.madridguide.activities;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.fran.madridguide.R;
-import com.example.fran.madridguide.model.Activities;
 import com.example.fran.madridguide.model.Activity;
 import com.example.fran.madridguide.util.Constants;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -16,7 +14,8 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -50,7 +49,14 @@ public class ActivityDetailActivity extends AppCompatActivity {
         if (activity != null) {
             nameTextView.setText(activity.getName());
             addressTextView.setText(activity.getAddress());
-            descriptionTextView.setText(activity.getDescription());
+
+
+            if (Locale.getDefault().getLanguage().equals(Locale.ENGLISH.getLanguage())){
+                descriptionTextView.setText(activity.getDescriptionEN());
+            }else{
+                descriptionTextView.setText(activity.getDescriptionES());
+
+            }
         }
 
         mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.activities_map);

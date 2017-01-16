@@ -19,13 +19,14 @@ public class ActivityEntityActivityMapper {
         for(ActivityEntity entity : activityEntities) {
 
             Activity activity = new Activity(entity.getId(),entity.getName());
-            activity.setDescription(entity.getDescriptionES());
+            activity.setDescriptionES(entity.getDescriptionES());
             activity.setAddress(entity.getAddress());
             activity.setUrl(entity.getUrl());
             activity.setLogoImageURL(entity.getLogoImg());
             activity.setLatitude(entity.getLatitude());
             activity.setLongitude(entity.getLongitude());
             activity.setImageURL(entity.getImg());
+            activity.setDescriptionEN(entity.getDescriptionEN());
 
             activityList.add(activity);
 

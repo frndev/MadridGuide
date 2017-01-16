@@ -85,7 +85,8 @@ public class ActivityDAO implements DAOPersistable<Activity>{
         content.put(KEY_ACTIVITY_NAME, activity.getName());
         content.put(KEY_ACTIVITY_ADDRESS, activity.getAddress());
         content.put(KEY_ACTIVITY_URL, activity.getUrl());
-        content.put(KEY_ACTIVITY_DESCRIPTION, activity.getDescription());
+        content.put(KEY_ACTIVITY_DESCRIPTION_ES, activity.getDescriptionES());
+        content.put(KEY_ACTIVITY_DESCRIPTION_EN, activity.getDescriptionEN());
         content.put(KEY_ACTIVITY_IMAGE_URL, activity.getImageURL());
         content.put(KEY_ACTIVITY_LOGO_IMAGE_URL, activity.getLogoImageURL());
         content.put(KEY_ACTIVITY_LATITUDE, activity.getLatitude());
@@ -102,7 +103,8 @@ public class ActivityDAO implements DAOPersistable<Activity>{
         Activity a = new Activity(c.getLong(c.getColumnIndex(KEY_ACTIVITY_ID)),c.getString(c.getColumnIndex(KEY_ACTIVITY_NAME)));
 
         a.setAddress(c.getString(c.getColumnIndex(KEY_ACTIVITY_ADDRESS)));
-        a.setDescription(c.getString(c.getColumnIndex(KEY_ACTIVITY_DESCRIPTION)));
+        a.setDescriptionES(c.getString(c.getColumnIndex(KEY_ACTIVITY_DESCRIPTION_ES)));
+        a.setDescriptionEN(c.getString(c.getColumnIndex(KEY_ACTIVITY_DESCRIPTION_EN)));
         a.setUrl(c.getString(c.getColumnIndex(KEY_ACTIVITY_URL)));
         a.setLogoImageURL(c.getString(c.getColumnIndex(KEY_ACTIVITY_LOGO_IMAGE_URL)));
         a.setImageURL(c.getString(c.getColumnIndex(KEY_ACTIVITY_IMAGE_URL)));
@@ -186,7 +188,8 @@ public class ActivityDAO implements DAOPersistable<Activity>{
         activity.setLogoImageURL(contentValues.getAsString(KEY_ACTIVITY_LOGO_IMAGE_URL));
         activity.setLatitude(contentValues.getAsDouble(KEY_ACTIVITY_LATITUDE));
         activity.setLongitude(contentValues.getAsDouble(KEY_ACTIVITY_LONGITUDE));
-        activity.setDescription(contentValues.getAsString(KEY_ACTIVITY_DESCRIPTION));
+        activity.setDescriptionES(contentValues.getAsString(KEY_ACTIVITY_DESCRIPTION_ES));
+        activity.setDescriptionEN(contentValues.getAsString(KEY_ACTIVITY_DESCRIPTION_EN));
 
         return activity;
     }

@@ -31,11 +31,11 @@ public class ActivityTests extends AndroidTestCase {
     public void testANewActivityStoresDataInPropertiesCorrectly() {
         Activity sut = new Activity(11,ACTIVITY)
                 .setAddress(ADDRESS)
-                .setDescription(DESC)
+                .setDescriptionES(DESC)
                 .setUrl(URL)
                 ;
         assertEquals(sut.getAddress(),ADDRESS);
-        assertEquals(sut.getDescription(),DESC);
+        assertEquals(sut.getDescriptionES(),DESC);
         assertEquals(sut.getUrl(),URL);
     }
 }
